@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import AddBooks from './pages/AddBooks';
 import Books from './pages/Books';
 import Footer from './components/Footer';
+import UpdateBooks from './pages/UpdateBooks';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route  path='/' element={<Home/>} />
         <Route  path='/addbooks' element= {<AddBooks/> } />
         <Route  path='/books' element= {<Books/> } />
+        <Route  path='/updateBook/:id' element= {<UpdateBooks/> } />
       </Routes>
       <Footer />
     </BrowserRouter>

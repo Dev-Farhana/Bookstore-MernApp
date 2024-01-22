@@ -12,7 +12,7 @@ function Home() {
              <h2 style={{fontSize: "100px", paddingTop: "100px"}}>  Book Store 
              <span className='text-info'>  For You ! </span>   </h2>
              <h2 className='text-secondary'>  Checkout the books from here  </h2>
-                <button type="button" class="btn btn-outline-secondary my-3">
+                <button type="button" className="btn btn-outline-secondary my-3">
                   View Books
                </button>
             </div>
