@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const booksModel = require("../model/booksModel");
 
-router.post("/books",async (req,res) => {
+router.post("/api/books",async (req,res) => {
     try{
         const data = req.body;
         const newBook = new booksModel(data);
@@ -13,7 +13,7 @@ router.post("/books",async (req,res) => {
     }
 })
 
-router.get("/getbooks", async (req,res) => {
+router.get("/api/getbooks", async (req,res) => {
     let books ;
     try{
         books =  await booksModel.find();
@@ -24,7 +24,7 @@ router.get("/getbooks", async (req,res) => {
     }
 })
 
-router.get("/getbooks/:id", async (req,res) => {
+router.get("/api/getbooks/:id", async (req,res) => {
     let books ;
     const id = req.params.id;
     try{
@@ -36,7 +36,7 @@ router.get("/getbooks/:id", async (req,res) => {
     }
 })
 
-router.put("/updatebooks/:id", async(req,res) => {
+router.put("/api/updatebooks/:id", async(req,res) => {
     const id = req.params.id ;
     const{title,price,image,author,description} = req.body;
    try{
@@ -50,7 +50,7 @@ router.put("/updatebooks/:id", async(req,res) => {
    } 
 })
 
-router.delete("/deletebooks/:id" , async(req,res) => {
+router.delete("/api/deletebooks/:id" , async(req,res) => {
     const id = req.params.id ;
    try{
       const deletedBooks =  await booksModel.findByIdAndDelete(id)

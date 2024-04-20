@@ -7,40 +7,37 @@ function AddBooks() {
   const [error,setError] =  useState("");
   const [msg,setMsg] =  useState("");
 
-  const [data,setData] = useState({title: "", author: "", image: "" ,price: ""});
+  const [data,setData] = useState([{title: "", author: "", image: "" ,price: ""}]);
 
   const change = (e) => {
-    // e.preventDefault();
     const {name, value} = e.target;
     setData({...data, [name]: value });
   };
 
-  const submitHandle = async (e) => {
+  const submitHandle = async () => {
     try {
       const response = await axios.post("http://localhost:2000/api/books", data);  
       if (response.data) {
         setMsg(response.data.mesg)
-        // setData()
       }
       setTimeout(()=> {
         navigate('/books');
       }, 3000)
     } catch (err) {
       setError(err);
-      // console.log(err);
     }
   };
 
   // console.log(data);
   
   return (
-    <div className='bg-dark d-flex justify-content-center align-items-center' style={{ minHeight: "91vh"}}>
+    <div className='bg-dark d-flex justify-content-center align-items-center text-center' style={{ minHeight: "91vh"}}>
       <div className="container">
   
        {error && <div className="alert alert-danger w-25 text-center m-auto" >  {error} </div>}
         { msg && <div className="alert alert-warning w-25 text-center m-auto" role="alert"> {msg} </div>}
 
-        <div className="mb-3">
+        <div className="mb-3 mx-5 text-center">
           <label htmlFor="exampleFormControlInput1" className="form-label text-white">
             Book Name:
           </label>
@@ -49,7 +46,7 @@ function AddBooks() {
             onChange={change} value={data.title}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-3 mx-5 ">
           <label htmlFor="exampleFormControlInput1" className="form-label text-white">
             Author Name:
           </label>
@@ -58,7 +55,7 @@ function AddBooks() {
             onChange={change} value={data.author}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-3 mx-5">
           <label htmlFor="exampleFormControlInput1" className="form-label text-white">
             Book Image:
           </label>
@@ -67,7 +64,7 @@ function AddBooks() {
             onChange={change} value={data.image}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-3 mx-5">
           <label htmlFor="exampleFormControlInput1" className="form-label text-white">
             Book Price:
           </label>
